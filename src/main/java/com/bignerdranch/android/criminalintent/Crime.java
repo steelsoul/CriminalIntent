@@ -24,7 +24,7 @@ class Crime {
         return mId;
     }
 
-    public String getTitle() {
+    String getTitle() {
         return mTitle;
     }
 
@@ -42,6 +42,11 @@ class Crime {
 
     public boolean isSolved() {
         return mSolved;
+    }
+
+    @Override
+    public String toString() {
+        return mTitle;
     }
 
     void setSolved(boolean solved) {
