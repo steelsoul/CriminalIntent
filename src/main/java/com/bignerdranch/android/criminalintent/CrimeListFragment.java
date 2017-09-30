@@ -1,5 +1,6 @@
 package com.bignerdranch.android.criminalintent;
 
+import android.annotation.SuppressLint;
 import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -45,11 +46,18 @@ public class CrimeListFragment extends ListFragment {
         startActivity(intent);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((CrimeAdapter) getListAdapter()).notifyDataSetChanged();
+    }
+
     private class CrimeAdapter extends ArrayAdapter<Crime> {
         CrimeAdapter(ArrayList<Crime> crimes) {
             super(getActivity(), 0, crimes);
         }
 
+        @SuppressLint("InflateParams")
         @NonNull
         @Override
         public View getView(int position, View convertView, @NonNull ViewGroup parent) {
@@ -63,6 +71,7 @@ public class CrimeListFragment extends ListFragment {
 
             TextView titleTextView =
                      convertView.findViewById(R.id.crime_list_item_titleTextView);
+            assert c != null;
             titleTextView.setText(c.getTitle());
             TextView dateTextView =
                      convertView.findViewById(R.id.crime_list_item_dateTextView);
