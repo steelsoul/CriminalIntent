@@ -52,4 +52,12 @@ class Crime {
     void setSolved(boolean solved) {
         mSolved = solved;
     }
+
+    void setTime(Date time) {
+        mDate = time;
+    }
+
+    Date getTime() {
+        return mDate;
+    }
 }
