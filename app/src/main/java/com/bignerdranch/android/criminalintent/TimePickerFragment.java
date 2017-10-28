@@ -38,7 +38,7 @@ public class TimePickerFragment extends DialogFragment {
             @Override
             public void onTimeChanged(TimePicker timePicker, int h, int m) {
                 Calendar c = Calendar.getInstance();
-                c.set(Calendar.HOUR, h);
+                c.set((h > 12 ? Calendar.PM : Calendar.AM) + Calendar.HOUR, h);
                 c.set(Calendar.MINUTE, m);
                 mTime = c.getTimeInMillis();
             }
