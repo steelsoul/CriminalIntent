@@ -16,6 +16,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
@@ -96,6 +97,7 @@ public class CrimeFragment extends Fragment {
         });
 
         mTimeButton = v.findViewById(R.id.crime_time);
+        updateTime();
         mTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,13 +135,17 @@ public class CrimeFragment extends Fragment {
             mCrime.setDate(date);
             updateDate();
         } else if (requestCode == REQUEST_TIME) {
-            Date time = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
+            long time = (long) data.getSerializableExtra(TimePickerFragment.EXTRA_TIME);
             mCrime.setTime(time);
             updateTime();
+            updateDate();
         }
     }
 
     private void updateTime() {
-        mTimeButton.setText(mCrime.getTime().toString());
+        Calendar c = Calendar.getInstance();
+        String timeString = DateUtils.formatDateTime(null, mCrime.getDate().getTime(),
+                DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_24HOUR);
+        mTimeButton.setText(timeString);
     }
 }

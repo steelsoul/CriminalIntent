@@ -53,11 +53,11 @@ class Crime {
         mSolved = solved;
     }
 
-    void setTime(Date time) {
-        mDate = time;
+    void setTime(long time) {
+        mDate.setTime(time);
     }
 
-    Date getTime() {
-        return mDate;
+    long getTime() {
+        return mDate.getTime();
     }
 }
