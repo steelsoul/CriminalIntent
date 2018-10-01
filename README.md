@@ -1,2 +1,2 @@
 # CriminalIntent
-No crime will be forgotten... No one guilty will be forgiven...
+No crime is forgotten, no guilty is forgiven.
